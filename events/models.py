@@ -28,7 +28,7 @@ class Event(models.Model):
         ('Fourth Year' , '4'),
     ]
     BRANCH_CHOICES =[
-        ('Mechanical Engineering','ME'),
+        ('Mechanical Engineering' , 'ME'),
         ('Computer Science Engineering','CSE'),
         ('Electronics and Communication Engineering','ECE'),
         ('Electrical Engineering','EE'),

@@ -2,72 +2,216 @@
 
 {% block body%}
 <div class="cont">
-  <br>
-  <br>
-<center>
-    <h3 style="font-weight: bolder;">Login</h3>
-</center>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+    *
+    {
+
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+      font-family: 'Poppins',sans-serif;
+    }
+    body{
+      overflow: hidden;
+    }
+    section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom,#5f9cda,#5f9cda);
+    }
+    section.color{
+      position: absolute;
+      filter: blur(150px);
+    }
+    section.color:nth-child(1){
+      top: -350px;
+      width:600px;
+      height:600px;
+      background:#ff359b;
+  }
+  section.color:nth-child(2){
+      bottom: -150px;
+      left: 100px;
+      width:500px;
+      height:500px;
+      background:#fffd87;
+  }
+  section.color:nth-child(3){
+      bottom: 50px;
+      right: 100px;
+      width:300px;
+      height:300px;
+      background:#00d2ff;
+  }
+  .box{
+    position: relative;
+
+  }
+  .box .square{
+    position: absolute;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background:rgba(24, 5, 5, 0.1);
+    border-radius: 10px;
+    animation: animate 10s linear infinite;
+    animation-delay: calc(-1s * var(--i));
+  }
+  @keyframes animate{
+    0%,100%
+    {
+      transform: translateY(-40px);
+    }
+    50%{
+      transform: translateY(40px);
+    }
+  }
+  .box .square:nth-child(1){
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+  }
+  .box .square:nth-child(2){
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+  }
+  .box .square:nth-child(3){
+    bottom: 150px;
+    right:-60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+  }
+  .box .square:nth-child(4){
+    bottom: -80px;
+    left:100px;
+    width: 50px;
+    height: 50px;
+  }
+  .box .square:nth-child(5){
+    top: -80px;
+    left:-60px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .container{
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+    background:rgba(235, 227, 227, 0.919);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    
+  }
+  .form{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+  }
+  .form h2{
+    position: relative;
+    color: rgb(24, 19, 19);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+.form h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background: rgb(30, 22, 22);
+}
+.form .inputBox{
+  width: 100%;
+  margin-top: 20px; 
+
+}   
+.form .inputBox input{
+  width: 100%;
+  background: rgba(238, 232, 232, 0.867);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(19, 3, 3, 0.5);
+  border-right: 1px solid rgba(15, 3, 3, 0.2);
+  border-bottom: 1px solid rgba(14, 4, 4, 0.2);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color:rgb(25, 19, 19);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.form .inputBox input::placeholder{
+  color: rgb(30, 23, 23);
+}
+.form .inputBox input[type="submit"]{
+  background: rgb(35, 26, 26);
+  color: rgb(255, 255, 255);
+  max-width: 100px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
 
 
 
-  <form action="" method="post" class="form">
-            
-    {% csrf_token %}
-    <div class="login-root">
-      <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
-        <div class="loginbackground box-background--white padding-top--64">
-          <div class="loginbackground-gridContainer">
-            <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-              <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
-              </div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
-              <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
-              <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
-              <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
-              <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
-              <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
-              <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
-              <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
-            </div>
-            <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
-              <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
-            </div>
-          </div>
-        </div>
-        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
-          <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-            <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Stackfindover</a></h1>
-          </div>
-          <div class="formbg-outer">
-            <div class="formbg">
-              <div class="formbg-inner padding-horizontal--48">
-                <span class="padding-bottom--15">Sign in to your account</span>
-                <form id="stripe-login">
-                  <div class="field padding-bottom--24">
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
-                  </div>
-                  <div class="field padding-bottom--24">
-                    <div class="grid--50-50">
-                      <label for="password">Password</label>
-                      <div class="reset-pass">
-        
-    <center><input type="submit" class="btn btn-dark"></center>        
-</form>
+
+</style>
+
+
+
+  
+<section>
+<div class="color"></div>
+<div class="color"></div>
+<div class="color"></div>
+<div class="box">
+  <div class="square" style="--i:0;"></div>
+  <div class="square" style="--i:1;"></div>
+  <div class="square" style="--i:2;"></div>
+  <div class="square" style="--i:3;"></div>
+  <div class="square" style="--i:4;"></div>
+  <div class="container">
+    <form action="" method="post" class="form">
+      {% csrf_token %}
+    <div class="form">
+      <h2>Login</h2>
+      <div class="inputBox">
+        <input type="text" placeholder="Email" name="email">
+      </div>
+      <div class="inputBox">
+        <input type="password" placeholder="Password" name="password">
+      </div>
+      <div class="inputBox">
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+  </div>
 </div>
+</form>
+</section>
 
 
 {% endblock %}

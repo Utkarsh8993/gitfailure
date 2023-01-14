@@ -49,5 +49,8 @@ def login_view(request):
     return render(request , "users/login.html")
 
 
-def user(request , name):
-    user = User.objects.get(naeam)
+def user(request , user_id):
+    user = User.objects.get(pk=user_id)
+    return render(request , "users/user.html" , {
+        "user" : user
+    })

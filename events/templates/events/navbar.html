@@ -23,8 +23,20 @@
             <li><a class="dropdown-item" href="{% url 'addcandidate' %}">New Candidate</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'events' %}">View Events</a></li>
+            <li><a class="dropdown-item" href="{% url 'addevent' %}">New Events</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'logout' %}" id="login">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'user' request.user.id %}" id="login">User</a>
         </li>
         {% if request.user.vote_1_bool and request.user.vote_2_bool and request.user.vote_3_bool %}
         <li class="nav-item">

@@ -114,17 +114,6 @@ def all_candidates(request):
 
 
 
-def show_candidate(request, candidate_id):
-    candidate=Candidate.objects.get(pk=candidate_id)
-    return render(request, "elections/candidate.html",{
-        "candidate":candidate
-    })
-
-
-
-
-
-
 def result(request):
     branch = request.user.branch
     all_candidates= Candidate.objects.filter(branch = branch)

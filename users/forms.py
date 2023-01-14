@@ -11,7 +11,7 @@ class RegisterForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('email' , 'name' , 'enrolno', 'branch' , 'password1' , 'password2')
+        fields = ('email' , 'name' , 'enrolno', 'branch' ,'year', 'password1' , 'password2')
 
         def save(self , commit = True):
             user = super(RegisterForm , self).save(commit=False)
@@ -25,4 +25,6 @@ class RegisterForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['branch'].widget.attrs['class'] = 'form-control'
-        self.fields['branch'].label = ''
+        self.fields['branch'].label = 'Branch'
+        self.fields['year'].widget.attrs['class'] = 'form-control'
+        self.fields['year'].label = 'Year'

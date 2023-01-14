@@ -7,26 +7,33 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     BRANCH_CHOICES =[
-        ('ME' , 'Mechanical Engineering'),
-        ('CSE' , 'Computer Science Engineering'),
-        ('ECE' , 'Electronics and Communication Engineering'),
-        ('EE' , 'Electrical Engineering'),
-        ('EPH' , 'Engineering Physics'),
+        ('Mechanical Engineering' , 'ME'),
+        ('Computer Science Engineering','CSE'),
+        ('Electronics and Communication Engineering','ECE'),
+        ('Electrical Engineering','EE'),
+        ('Engineering Physics','EPH' ),
+        ('Civil Enginnering','CE'),
+        ('Chemical Engineering', 'CHE'),
+        ('Mathematics and Computing', 'MNC'),
+        ('Metallurgy and Material sciences','META'),
         ('NON' , 'others or None of the Above')
     ]
+    YEAR_CHOICES = [
+        ('First' , '1'),
+        ('Second' , '2'),
+        ('Third' , '3'),
+        ('Fourth' , '4'),
+    ]
     username = None
-    branch = models.CharField(max_length=3,null=True , blank=True , choices=BRANCH_CHOICES)
+    branch = models.CharField(max_length=50,null=True , blank=True , choices=BRANCH_CHOICES)
     name  = models.CharField(max_length=32)
     enrolno = models.CharField(max_length=8  , blank=True)
     email = models.EmailField(unique = True, )
+    year = models.CharField(max_length=50,null=True , blank=True , choices=YEAR_CHOICES)
 
     vote_1_bool = models.BooleanField(default=False)
     vote_2_bool = models.BooleanField(default=False)
     vote_3_bool = models.BooleanField(default=False)
-    
-    vote_1 = models.ForeignKey(Candidate ,null=True , blank=True, on_delete=models.CASCADE , related_name="candidate1" )
-    vote_2 = models.ForeignKey(Candidate ,null=True , blank=True, on_delete=models.CASCADE , related_name="candidate2" )
-    vote_3 = models.ForeignKey(Candidate ,null=True , blank=True, on_delete=models.CASCADE , related_name="candidate3")
 
     objects = UserManager()
     
