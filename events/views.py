@@ -5,20 +5,22 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 
-
+def home(request):
+    return render(request, "events/home.html",{})
 
 def addevent(request):
     
     if request.method=="POST":
         if request.user.is_authenticated:
-            form=EventForm(request.POST, request.FILES)
-            if form.is_valid:
+            user=request.user
+            form=EventForm(request.POST)
+            if form.is_valid():
                 form.save()
                 event=Event.objects.get(name=request.POST["name"])
                 messages.success(request, "You have posted your event")             
-                event.manager = request.user
                 event.save()
-                return redirect('home')
+                user.organised_events.apppend(event)
+                return redirect('eventshome')
             else:
                 messages.success("Please enter valid Information")
                 return redirect('addevent')
@@ -50,7 +52,7 @@ def addvenue(request):
             if form.is_valid:
                 form.save()
                 messages.success(request, "You have Added the Venue")            
-                return redirect('home')
+                return redirect('eventshome')
             else:
                 messages.success("Please enter valid Information")
                 return redirect('addvenue')
@@ -58,7 +60,23 @@ def addvenue(request):
             messages.success(request , "Please login first.")                        
             return redirect('login')
     else:
-        form=EventForm()
+        form=VenueForm()
         return render(request, "events/addvenue.html",{
                 "form":form     
         })
+
+def all_venues(request):
+    venues=Venue.objects.all()
+    return render(request, "events/venues.html",{
+        "venues":venues
+    })
+
+
+def user_addevent(request, event_id):
+    user=request.user
+    event=Event.objects.get(pk=event_id)
+    user.events.append(event)
+    user.save()
+    return render(request, "users/user.html",{
+
+    } )        

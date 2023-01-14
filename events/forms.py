@@ -15,7 +15,7 @@ class VenueForm(forms.ModelForm):
 
         widgets = {
             'name' : forms.TextInput(attrs={'class' : 'form-control' , 'placeholder' : 'Name'} ,),
-            'adress' : forms.Textarea(attrs={'class' : 'form-control' , 'placeholder' : 'Adress'} ,),
+            'address' : forms.Textarea(attrs={'class' : 'form-control' , 'placeholder' : 'Address'} ,),
            
         }
 
@@ -34,7 +34,7 @@ class EventForm(forms.ModelForm):
             'date' : 'Date of Event',
             'time' : 'Time of Commencement',
             'duration' : '',
-            'yop':'Year to be invited',
+            'yop':'Years to be invited',
             'branch':'Branch',
             'description' : '',
             'mobile':'',

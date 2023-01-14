@@ -49,8 +49,23 @@ def login_view(request):
     return render(request , "users/login.html")
 
 
-def user(request , user_id):
-    user = User.objects.get(pk=user_id)
+def user(request):
+    user = request.user
     return render(request , "users/user.html" , {
         "user" : user
     })
+
+
+def update_user(request):
+    user=request.user
+    if request.method == "POST": 
+        form = RegisterForm(request.POST or None ,  instance=user)
+        if form.is_valid():
+            form.save()
+            return render(request, "users/user.html",)
+    else:
+        form = RegisterForm(instance=user)
+        return render(request , "users/register.html", {
+            "form" : form
+        } )
+    

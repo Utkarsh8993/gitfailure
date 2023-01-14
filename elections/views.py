@@ -129,7 +129,7 @@ def result(request):
     vote1=[]
     for can in winner_candidates:
         vote5.append(can.vote5)
-        vote3.append(can.vote1)
+        vote3.append(can.vote3)
         vote1.append(can.vote1)
     maxvote5=max(vote5)
     maxvote3=max(vote3)

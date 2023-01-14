@@ -3,6 +3,7 @@ from elections.models import Candidate
 # Create your models here.
 from .manager import UserManager
 from django.contrib.auth.models import AbstractUser
+from events.models import Event
 
 
 class User(AbstractUser):
@@ -30,6 +31,8 @@ class User(AbstractUser):
     enrolno = models.CharField(max_length=8  , blank=True)
     email = models.EmailField(unique = True, )
     year = models.CharField(max_length=50,null=True , blank=True , choices=YEAR_CHOICES)
+    events=models.ManyToManyField(Event, blank=True, related_name="user")
+    organised_events=models.ManyToManyField(Event, blank=True, related_name="manager")
 
     vote_1_bool = models.BooleanField(default=False)
     vote_2_bool = models.BooleanField(default=False)

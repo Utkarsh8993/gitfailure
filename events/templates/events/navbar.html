@@ -32,11 +32,20 @@
             <li><a class="dropdown-item" href="{% url 'addevent' %}">New Events</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Venues
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'venues' %}">View Venues</a></li>
+            <li><a class="dropdown-item" href="{% url 'addvenue' %}">New Venue</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'logout' %}" id="login">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'user' request.user.id %}" id="login">User</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'user' %}" id="login">User</a>
         </li>
         {% if request.user.vote_1_bool and request.user.vote_2_bool and request.user.vote_3_bool %}
         <li class="nav-item">
