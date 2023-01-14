@@ -34,9 +34,21 @@
                  VOTE
                 </button>
                 <ul class="dropdown-menu">
+                {% if request.user.vote_1_bool %}
                   <li><a class="dropdown-item" href="{% url 'vote1' candidate.id %}">First Preferance</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" disabled href="{% url 'vote2' candidate.id %}">First Preferance</a></li>
+                {% endif %}
+                {% if request.user.vote_1_bool %}
                   <li><a class="dropdown-item" href="{% url 'vote2' candidate.id %}">Second Preferance</a></li>
-                  <li><a class="dropdown-item" href="{% url 'vote3' candidate.id %}">Third Preferance</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" disabled href="{% url 'vote2' candidate.id %}">Second Preferance</a></li>
+                {% endif %}
+                {% if request.user.vote_1_bool %}
+                <li><a class="dropdown-item" href="{% url 'vote3' candidate.id %}">Third Preferance</a></li>
+              {% else %}
+                <li><a class="dropdown-item" disabled href="{% url 'vote3' candidate.id %}">Third Preferance</a></li>
+              {% endif %}
                 </ul>
               </div>
               </div>

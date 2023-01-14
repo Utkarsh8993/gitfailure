@@ -22,7 +22,7 @@
 </style>
 
 
-    {% for winner in winner_candidates %}
+    
     <div class="container1">
     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <h1>{{ winner.name }} with {{ winner.votes }} votes</h1>
@@ -35,7 +35,7 @@
         <img src="{% static 'elections/images/default.png'%}" width=300px border-radius:25px border:border: 2px solid #111110>
     {% endif %}
     </div>
-    {% endfor %}
+    
     <style>
         body {
 	margin: 0;

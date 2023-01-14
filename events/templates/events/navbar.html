@@ -26,7 +26,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'logout' %}" id="login">Logout</a>
         </li>
-        
+        {% if request.user.vote_1_bool and request.user.vote_2_bool and request.user.vote_3_bool %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'result' %}" id="login">Result</a>
+        </li>
+        {% endif %}
         {% else %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'login' %}" id="login">Login</a>
