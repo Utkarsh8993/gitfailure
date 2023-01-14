@@ -1,0 +1,53 @@
+{% extends 'events/layout.html' %}
+
+{% block body %}
+<center><h3>Candidates</h3></center>
+{% for  candidate in candidates %}
+  <style>
+    .card{
+      display: inline-block;
+      margin-left: 70px;
+      margin-top: 50px;
+    }
+    #profile_picture{
+      
+     
+      border: 2px solid black;
+     
+    }
+  </style>
+  {% if candidate.branch == request.user.branch %}
+
+        
+    
+      <div class="card" style="width: 18rem;">
+        
+          <img src= "" class="card-img-top" id ="profile_picture" alt="Profile Picture">
+        
+          <div class="card-body">
+            <h5 class="card-title">{{ candidate.name }}</h5>
+            <p class="card-text">{{ candidate.branch }}</p>
+            <a href="{% url 'show_candidate' candidate.id %}" class="btn btn-primary">Read More</a>
+            
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 VOTE
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'vote1' candidate.id %}">First Preferance</a></li>
+                  <li><a class="dropdown-item" href="{% url 'vote2' candidate.id %}">Second Preferance</a></li>
+                  <li><a class="dropdown-item" href="{% url 'vote3' candidate.id %}">Third Preferance</a></li>
+                </ul>
+              </div>
+              </div>
+            {% if request.user.email == candidate.email %}
+            <a href="{% url 'update' candidate.id %}" class="btn btn=primary">Update</a> 
+            {% endif %}
+          </div>
+      </div>
+      
+  {% endif %}
+
+{% endfor %}
+
+{% endblock %}

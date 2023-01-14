@@ -1,0 +1,12 @@
+{% extends "events/layout.html" %}
+
+{% block body %}
+
+
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-outline-secondary">
+    </form>
+{% endblock %}

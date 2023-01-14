@@ -1,0 +1,31 @@
+{% extends "events/layout.html" %}
+
+{% block body %}
+<style>
+    .main{
+        margin-top: 50px;
+        text-decoration: none;
+    }
+    #or{
+        margin-top: 50px;
+    }
+</style>
+
+<center>
+    <h1>Welcomeg</h1>
+
+    <div class="main" >
+        <button type="button" class="btn btn-outline-warning btn-lg"><a href="{% url 'addcandidate' %}" class="main">Stand For Elections</a></button>
+    </div>
+    
+        
+        <h3 id="or">OR</h3>
+     
+    <div class="main">
+        <button type="button" class="btn btn-outline-warning btn-lg"><a href="{% url 'candidates' %}"  class="main">Vote</a></button> 
+    </div>
+        
+
+</center>
+
+{% endblock %}
